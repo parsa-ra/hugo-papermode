@@ -1,4 +1,11 @@
 {{- define "main" }}
+  {{ if .Params.redirect }}
+    <meta http-equiv="refresh" content="0; url='{{ .Params.redirect }}'" />
+    <link rel="canonical" href="{{ .Params.redirect }}">
+    <script>window.location.href='{{ .Params.redirect }}';</script>
+    <p>Redirecting to <a href="{{ .Params.redirect }}">{{ .Params.redirect }}</a></p>
+  {{ else }}
+
 
 <article class="post-single">
   <header class="post-header">
@@ -61,5 +68,6 @@
   {{- partial "comments.html" . }}
   {{- end }}
 </article>
+{{ end }}
 
 {{- end }}{{/* end main */}}
